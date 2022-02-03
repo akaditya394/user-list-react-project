@@ -3,7 +3,7 @@ import Card from "../../UI/Card/Card.jsx";
 import classes from "./AddUser.module.css";
 import Button from "../../UI/Button/Button";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
@@ -14,7 +14,7 @@ const AddUser = () => {
       return;
     }
 
-    console.log(enteredUsername, enteredAge);
+    props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
   };
@@ -49,7 +49,7 @@ const AddUser = () => {
           onChange={ageChangeHandler}
           value={enteredAge}
         />
-        <Button type="button" onClick={addUserHandler}>
+        <Button type="submit" onClick={addUserHandler}>
           Add User
         </Button>
       </form>
